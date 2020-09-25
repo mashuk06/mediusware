@@ -124,7 +124,9 @@ export default {
                     tags: []
                 }
             ],
-            product_variant_prices: [],
+            product_variant_prices: [
+
+            ],
             dropzoneOptions: {
                 url: 'https://httpbin.org/post',
                 thumbnailWidth: 150,

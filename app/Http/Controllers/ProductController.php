@@ -17,7 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $data['products'] = Product::with('variants')->get();
+        dd($data);
+        return view('products.index',$data);
     }
 
     /**
@@ -39,7 +41,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        if($request->isMethod('post')){
+            //dd($request->product_variant);
+            $product = Product::saveProduct($request->all());
+            $variant = $product->productVariants()->saveMany([$request->product_variant]);
+            dd($variant);
+        }
     }
 
 

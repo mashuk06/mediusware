@@ -51,13 +51,13 @@
                     </thead>
 
                     <tbody>
-
+                    @foreach($products as $key => $value)
                     <tr>
-                        <td>1</td>
-                        <td>T-Shirt <br> Created at : 25-Aug-2020</td>
-                        <td>Quality product in low cost</td>
+                        <td>{{ ++$key }}</td>
+                        <td>{{ $value->title }} <br> Created at : {{ date('d-M-y',strtotime($value->created_at)) }}</td>
+                        <td>{{ $value->description }}</td>
                         <td>
-                            <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
+                            <dl class="row mb-0" style="overflow: hidden" id="variant">
 
                                 <dt class="col-sm-3 pb-0">
                                     SM/ Red/ V-Nick
@@ -69,7 +69,7 @@
                                     </dl>
                                 </dd>
                             </dl>
-                            <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more</button>
+{{--                            <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more</button>--}}
                         </td>
                         <td>
                             <div class="btn-group btn-group-sm">
@@ -77,7 +77,7 @@
                             </div>
                         </td>
                     </tr>
-
+                    @endforeach
                     </tbody>
 
                 </table>
